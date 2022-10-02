@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <article>
+
+    </article>
+    <input type="button" value="fetch" onclick="
+      /*
+      fetch('css').then(function(response){//이름이 없는 함수 (익명함수)
+        response.text().then(function(text){
+          document.querySelector('article').innerHTML = text;
+        })
+      });
+      */
+      //Asynchronous(비동기)식으로 작동하는 fetch
+      fetch('javascript').then(function(response){//response 객체주기로 함
+        console.log(response.status);
+        if(response.status=='404'){
+          alert('Not found');
+        }
+      });//응답끝나면 callbackme 호출
+      console.log(1);
+      console.log(2);
+    ">
+  </body>
+</html>
