@@ -15,8 +15,48 @@
   <link rel="stylesheet" href="style.css"> <!--css 불러오기-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="colors.js"></script> <!--다크모드 라이트모드-->
+  <script>
+    window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '378878037670297',
+      cookie     : true,                     // Enable cookies to allow the server to access the session.
+      xfbml      : true,                     // Parse social plugins on this webpage.
+      version    : 'v15.0'           // Use this Graph API version for this call.
+    });
+
+    var callback=function(response) {   // Called after the JS SDK has been initialized.
+      console.log(response);
+      // statusChangeCallback(response);        // Returns the login status.
+      if (response.status === 'connected') {
+        document.querySelector('#authBtn').value="Logout";
+      } else {
+        document.querySelector('#authBtn').value="Login";
+  }
+    };
+    FB.getLoginStatus(callback);
+    
+    // FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+    //   statusChangeCallback(response);        // Returns the login status.
+    // }); 위에랑 같음
+  };
+  </script>
+  <!-- Load the JS SDK asynchronously -->
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 </head>
 <body>
+  <input type="button" id="authBtn" value="checking..." onclick="
+    if(this.value==='Login'){
+      //now Logout
+      FB.login(function(response){
+        console.log('login => ', response);
+      });
+    }else{
+      //now Login
+      FB.logout(function(response){
+        console.log('lougout => ', response);
+      }); 
+    }
+  ">
   <h1><a href="index.html">WEB</a></h1>
   <input type="button" value="night" onclick="nightDayHandler(this);">
   <div id="grid">
