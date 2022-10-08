@@ -22,6 +22,9 @@
       // statusChangeCallback(response);        // Returns the login status.
       if (response.status === 'connected') {
         document.querySelector('#authBtn').value="Logout";
+        FB.api('/me',function(resp){
+          document.querySelector('#name').innerHTML=resp.name;
+        });
       } else {
         document.querySelector('#authBtn').value="Login";
       }
@@ -61,7 +64,8 @@
         checkLoginStatus(response);
       }); 
     }
-  ">
+  ">,<div id="name"></div>
+
   <h1><a href="index.html">WEB</a></h1>
   <input type="button" value="night" onclick="nightDayHandler(this);">
   <div id="grid">
