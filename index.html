@@ -18,6 +18,15 @@
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <meta name="google-signin-client_id" content="62975013164-ountm30i2fmq5q2cqejibr19um7iji3n.apps.googleusercontent.com">
   <script>
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
+  </script>
+  <script>
 
     var checkLoginStatus=function(response) {   // Called after the JS SDK has been initialized.
       console.log(response);
