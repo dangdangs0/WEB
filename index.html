@@ -23,10 +23,10 @@
       console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
       console.log('Name: ' + profile.getName());
       console.log('Image URL: ' + profile.getImageUrl());
-      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+      console.log('Email: ' + profile.getEmail()); 
     }
   </script>
-  <script>
+  <!-- <script>
 
     var checkLoginStatus=function(response) {   // Called after the JS SDK has been initialized.
       console.log(response);
@@ -57,12 +57,12 @@
     //   statusChangeCallback(response);        // Returns the login status.
     // }); 위에랑 같음
   };
-  </script>
+  </script> -->
   <!-- Load the JS SDK asynchronously -->
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  <!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script> -->
 </head>
 <body>
-  <input type="button" id="authBtn" value="checking..." onclick="
+  <!-- <input type="button" id="authBtn" value="checking..." onclick="
     if(this.value==='Login'){
       //now Logout
       FB.login(function(response){
@@ -76,7 +76,7 @@
         checkLoginStatus(response);
       }); 
     }
-  "><span id="name"></span>
+  "><span id="name"></span> -->
 
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
