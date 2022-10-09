@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="style.css"> <!--css 불러오기-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="colors.js"></script> <!--다크모드 라이트모드-->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="62975013164-ountm30i2fmq5q2cqejibr19um7iji3n.apps.googleusercontent.com">
   <script>
 
     var checkLoginStatus=function(response) {   // Called after the JS SDK has been initialized.
@@ -66,6 +68,8 @@
       }); 
     }
   "><span id="name"></span>
+
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
   <h1><a href="index.html">WEB</a></h1>
   <input type="button" value="night" onclick="nightDayHandler(this);">
