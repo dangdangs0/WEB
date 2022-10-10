@@ -16,6 +16,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="colors.js"></script> <!--다크모드 라이트모드-->
   <script>
+    function checkLgoinS(){
+      var loginBtn=document.querySelector('#loginBtn');
+          if(gauth.isSignedIn.get()){
+            console.log('logined');
+            loginBtn.value='Logout';
+          }else{
+            console.log('logouted');
+            loginBtn.value='Login;'
+          }
+      }
     function init(){
       console.log('init');
       gapi.load('auth2', function() {
@@ -25,14 +35,8 @@
         })
         gauth.then(function(){
           console.log('googleAuth Success');
-          var loginBtn=document.querySelector('#loginBtn');
-          if(gauth.isSignedIn.get()){
-            console.log('logined');
-            loginBtn.value='Logout';
-          }else{
-            console.log('logouted');
-            loginBtn.value='Login;'
-          }
+          checkLgoinS();
+          
         }, function(){
           console.log('googleAuth Fail');
         })
@@ -95,10 +99,12 @@
       if(this.value==='Login'){
         gauth.signIn().then(function(){
           console.log('gauth.signIn()');
+          checkLgoinS();
         });
       }else{
         gauth.signOut().then(function(){
           console.log('gauth.signIn()');
+          checkLgoinS();
         });
       }
     ">
