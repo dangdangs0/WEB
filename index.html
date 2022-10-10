@@ -15,23 +15,20 @@
   <link rel="stylesheet" href="style.css"> <!--css 불러오기-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="colors.js"></script> <!--다크모드 라이트모드-->
-  <meta name="google-signin-client_id" content="62975013164-ountm30i2fmq5q2cqejibr19um7iji3n.apps.googleusercontent.com">
   <script>
     function init(){
       console.log('init');
       gapi.load('auth2', function() {
-        /* Ready. Make a call to gapi.auth2.init or some other API */
         console.log('auth2');
+        var gauth=gapi.auth2.init({
+          client_id:'62975013164-ountm30i2fmq5q2cqejibr19um7iji3n.apps.googleusercontent.com'
+        })
+        gauth.then(function(){
+          console.log('googleAuth Success');
+        }, function(){
+          console.log('googleAuth Fail');
+        })
       });
-    }
-  </script>
-  <script>
-    function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-      console.log('Name: ' + profile.getName());
-      console.log('Image URL: ' + profile.getImageUrl());
-      console.log('Email: ' + profile.getEmail()); 
     }
   </script>
   <script>
@@ -86,7 +83,6 @@
     }
   "><span id="name"></span>
 
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
   <h1><a href="index.html">WEB</a></h1>
   <input type="button" value="night" onclick="nightDayHandler(this);">
