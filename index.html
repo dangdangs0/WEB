@@ -15,15 +15,20 @@
   <link rel="stylesheet" href="style.css"> <!--css 불러오기-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="colors.js"></script> <!--다크모드 라이트모드-->
-  <script>
+  <!-- <script>
     function checkLgoinS(){
       var loginBtn=document.querySelector('#loginBtn');
+      var nameTxt=document.querySelector('#name');
           if(gauth.isSignedIn.get()){
             console.log('logined');
             loginBtn.value='Logout';
+            var profile=gauth.currnetUser.get().getBasicProfile();
+            console.log(profile.getName());
+            nameTxt.innerHTML='Welcome <strong>'+profile.getName()+'</strong> ';
           }else{
             console.log('logouted');
             loginBtn.value='Login;'
+            nameTxt.innerHTML='';
           }
       }
     function init(){
@@ -42,7 +47,7 @@
         })
       });
     }
-  </script>
+  </script> -->
   <script>
 
     var checkLoginStatus=function(response) {   // Called after the JS SDK has been initialized.
@@ -95,9 +100,13 @@
     }
   "><span id="name"></span>
 
+  <!-- <div>
+    <span id="name"></span>
     <input type="button" id="loginBtn" value="checking..." onclick="
       if(this.value==='Login'){
-        gauth.signIn().then(function(){
+        gauth.signIn({
+          scope:'https://www.googleapis.com/auth/calendar'
+        }).then(function(){
           console.log('gauth.signIn()');
           checkLgoinS();
         });
@@ -108,6 +117,7 @@
         });
       }
     ">
+  </div> -->
 
   <h1><a href="index.html">WEB</a></h1>
   <input type="button" value="night" onclick="nightDayHandler(this);">
@@ -122,6 +132,8 @@
       <p>The World Wide Web (WWW)에 관한 설명</p>
     </div>
   </div>
+  <!-- <script src="https://accounts.google.com/gsi/client?onload=init" async defer></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script> -->
   <p>
     <div id="disqus_thread"></div>
     <script>
@@ -143,7 +155,7 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </p>
-  <script src="https://accounts.google.com/gsi/client?onload=init" async defer></script>
+  
   <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
