@@ -25,6 +25,11 @@
         })
         gauth.then(function(){
           console.log('googleAuth Success');
+          if(gauth.isSignedIn.get()){
+            console.log('logined');
+          }else{
+            console.log('logouted');
+          }
         }, function(){
           console.log('googleAuth Fail');
         })
